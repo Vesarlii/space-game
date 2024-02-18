@@ -19,19 +19,87 @@ class Scene1 extends Phaser.Scene {
         frameWidth: 80,
         frameHeight: 80});
 
-        this.load.spritesheet("explosion", "assets/spritesheets/explosion.png",{
-          frameWidth: 60,
-          frameHeight: 60});
+      this.load.spritesheet("explosion", "assets/spritesheets/explosion.png",{
+        frameWidth: 60,
+        frameHeight: 60});
 
-        this.load.spritesheet("power-up", "assets/spritesheets/power-up.png",{
-          frameWidth: 40,
-          frameHeight: 40});
+      this.load.spritesheet("power-up", "assets/spritesheets/power-up.png",{
+        frameWidth: 40,
+        frameHeight: 40});
+
+      this.load.spritesheet("player", "assets/spritesheets/player.png",{
+        frameWidth: 90,
+        frameHeight: 90
+      });
+
+        
 
     }
   
     create() {
       this.add.text(20, 20, "Loading game...");
       this.scene.start("playGame");
+
+      this.anims.create({
+        key: "ship1_anim",
+        frames: this.anims.generateFrameNumbers("ship"),
+        frameRate:10,
+        repeat: -1
+      });
+      this.anims.create({
+        key: "ship2_anim",
+        frames: this.anims.generateFrameNumbers("ship2"),
+        frameRate:10,
+        repeat: -1
+      });
+      this.anims.create({
+        key: "ship3_anim",
+        frames: this.anims.generateFrameNumbers("ship3"),
+        frameRate:5,
+        repeat: -1
+      });
+      this.anims.create({
+        key: "explode",
+        frames: this.anims.generateFrameNumbers("explosion"),
+        frameRate:20,
+        repeat: 0,
+        hideOnComplete: true
+      });
+
+      this.anims.create({
+        key: "yellow",
+        frames: this.anims.generateFrameNumbers("power-up",{
+          start:0,
+          end: 1
+        }),
+        frameRate:6,
+        repeat: -1,
+      });
+      this.anims.create({
+        key: "blue",
+        frames: this.anims.generateFrameNumbers("power-up",{
+          start:2,
+          end: 3
+        }),
+        frameRate:6,
+        repeat: -1,
+      });
+      this.anims.create({
+        key: "pink",
+        frames: this.anims.generateFrameNumbers("power-up",{
+          start:4,
+          end: 5
+        }),
+        frameRate:6,
+        repeat: -1,
+      });
+
+      this.anims.create({
+        key: "thrust",
+        frames: this.anims.generateFrameNumbers("player"),
+        frameRate: 20,
+        repeat: -1
+      });
 
     }
   }

@@ -1,6 +1,10 @@
+var gameSettings = {
+  playerSpeed: 200,
+}
+
 var config = {
-    width: 1024,
-    height: 512,
+    width: 1024*2,
+    height: 512*2,
     backgroundColor: 0x000000,
     scene: [Scene1, Scene2],
     pixelArt: true,
