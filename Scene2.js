@@ -1,3 +1,4 @@
+
 class Scene2 extends Phaser.Scene {
     constructor() {
       super("playGame");
@@ -61,10 +62,17 @@ if(Math.random()>0.65){
       this.player.setCollideWorldBounds(true);
 
       this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+      this.projectiles = this.add.group();
   
+
+
     }
-  
- 
+    shootBeam(){
+      console.log("shootBeam function called");
+      var beam = new Beam(this);
+    }
+
+
     update() {
   
   
@@ -77,8 +85,15 @@ if(Math.random()>0.65){
 
       this.movePlayerManager();
       if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
-        console.log("FIRE!");
+        this.shootBeam();
       }
+
+      for(var i = 0; i < this.projectiles.getChildren().length; i++){
+        var beam = this.projectiles.getChildren() [i];
+        beam.update();
+      }
+
+
     
     }
 
