@@ -15,15 +15,28 @@ class Scene2 extends Phaser.Scene {
       this.ship1 = this.add.sprite(config.width / 2 - 50, config.height / 2, "ship");
       this.ship2 = this.add.sprite(config.width / 2, config.height / 2, "ship2");
       this.ship3 = this.add.sprite(config.width / 2 + 50, config.height / 2, "ship3");
+      this.ship4 = this.add.sprite(config.width / 2 + 100, config.height / 2, "ship4");
+      this.ship5 = this.add.sprite(config.width / 2 + 150, config.height / 2, "ship5");
+
+      this.enemies = this.physics.add.group();
+      this.enemies.add(this.ship1);
+      this.enemies.add(this.ship2);
+      this.enemies.add(this.ship3);
+      this.enemies.add(this.ship4);
+      this.enemies.add(this.ship5);
 
       
       this.ship1.play("ship1_anim");
       this.ship2.play("ship2_anim");
       this.ship3.play("ship3_anim");
+      this.ship4.play("ship4_anim");
+      this.ship5.play("ship5_anim");
 
       this.ship1.setInteractive();
       this.ship2.setInteractive();
       this.ship3.setInteractive();
+      this.ship4.setInteractive();
+      this.ship5.setInteractive();
 
       this.input.on("gameobjectdown", this.destroyShip, this);
   
@@ -64,9 +77,32 @@ if(Math.random()>0.65){
       this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
       this.projectiles = this.add.group();
   
+      this.physics.add.collider(this.projectiles, this.powerUps, function(projectile, powerUp){
+        projectile.destroy();
+      });
 
-
+      this.physics.add.overlap(this.player, this.powerUps, this.pickPowerUp, null, this);
+      this.physics.add.overlap(this.player, this.enemies, this.hurtPlayer, null, this);
+    
+      this.physics.add.overlap(this.projectiles, this.enemies, this.hitEnemy, null, this);      
     }
+
+ pickPowerUp(player, powerUp){
+  powerUp.disableBody(true,true);
+ }
+
+ hurtPlayer(player, enemy){
+  this.resetShipPos(enemy);
+  player.x = config.width /2 - 45;
+  player.y = config.height -64;
+ }
+
+ hitEnemy(projectile, enemy){
+  projectile.destroy();
+  this.resetShipPos(enemy);
+ }
+
+
     shootBeam(){
       console.log("shootBeam function called");
       var beam = new Beam(this);
@@ -79,6 +115,8 @@ if(Math.random()>0.65){
       this.moveShip(this.ship1, 5);
       this.moveShip(this.ship2, 2);
       this.moveShip(this.ship3, 3);
+      this.moveShip(this.ship4, 2);
+      this.moveShip(this.ship5, 3);
   
       this.background.tilePositionY -= 0.5;
       this.background00.tilePositionY -= 0.3;
