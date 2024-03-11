@@ -29,7 +29,7 @@ class Scene2 extends Phaser.Scene {
       this.ship1.play("ship1_anim");
       this.ship2.play("ship2_anim");
       this.ship3.play("ship3_anim");
-      this.ship4.play("ship4_anim");
+      this.ship4.play("ship4_anim");  
       this.ship5.play("ship5_anim");
 
       this.ship1.setInteractive();
@@ -93,13 +93,16 @@ if(Math.random()>0.65){
 
  hurtPlayer(player, enemy){
   this.resetShipPos(enemy);
+  var explosion = new Explosion(this, player.x, player.y);
   player.x = config.width /2 - 45;
   player.y = config.height -64;
  }
 
  hitEnemy(projectile, enemy){
+  var explosion = new Explosion(this, enemy.x, enemy.y);
   projectile.destroy();
   this.resetShipPos(enemy);
+  this.score += 15;
  }
 
 
@@ -140,9 +143,7 @@ if(Math.random()>0.65){
         this.player.setVelocityX(-gameSettings.playerSpeed);
       }else if (this.cursorKeys.right.isDown){
         this.player.setVelocityX(gameSettings.playerSpeed);
-      }
-      
-      if(this.cursorKeys.up.isDown){
+      }else if(this.cursorKeys.up.isDown){
         this.player.setVelocityY(-gameSettings.playerSpeed);
       }else if (this.cursorKeys.down.isDown){
         this.player.setVelocityY(gameSettings.playerSpeed);
