@@ -2,6 +2,9 @@
 class Scene2 extends Phaser.Scene {
     constructor() {
       super("playGame");
+      this.livesGroup; 
+      this.playerLives = 3;
+      this.score = 0;
     }
   
     create() {
@@ -11,6 +14,10 @@ class Scene2 extends Phaser.Scene {
       this.background00.setOrigin(0, 0);
       this.background = this.add.tileSprite(0, 0, config.width, config.height, "background");
       this.background.setOrigin(0, 0);
+
+      this.load.image("HP", "assets/images/hptruskawka.png");
+
+      //this.HP = this.add.sprite(config.width / 2, config.height / 2, "HP");
   
       this.ship1 = this.add.sprite(config.width / 2 - 50, config.height / 2, "ship");
       this.ship2 = this.add.sprite(config.width / 2, config.height / 2, "ship2");
@@ -50,10 +57,22 @@ class Scene2 extends Phaser.Scene {
       this.powerUps = this.physics.add.group();
 
       var maxObjects =4;
-      for (var i = 0; i <=maxObjects;i++){
-var powerUp = this.physics.add.sprite(40, 40, "power-up");
-this.powerUps.add(powerUp);
-powerUp.setRandomPosition(0, 0, game.config.width, game.config.geight);
+      var maxObjects = 4;
+      for (var i = 0; i <= maxObjects; i++) {
+          var powerUp = this.physics.add.sprite(40, 40, "power-up");
+          this.powerUps.add(powerUp);
+          powerUp.setRandomPosition(0, 0, game.config.width, game.config.height); // Poprawiony błąd w nazwie config.height
+
+          
+      var score = 0;
+
+      this.livesGroup = this.add.group();
+
+      for (var i = 1; i <= this.playerLives; i++) {
+        var life = this.add.image(config.width - 50 * (i + 1), 50, "HP");
+        life.setOrigin(1, 0);
+        this.livesGroup.add(life);
+      }
 
 if(Math.random()>0.65){
   powerUp.play("blue");
@@ -96,7 +115,13 @@ if(Math.random()>0.65){
   var explosion = new Explosion(this, player.x, player.y);
   player.x = config.width /2 - 45;
   player.y = config.height -64;
+
+  
+  this.playerLives-- ;
+  this.updateLivesDisplay(); 
  }
+
+ 
 
  hitEnemy(projectile, enemy){
   var explosion = new Explosion(this, enemy.x, enemy.y);
@@ -106,9 +131,29 @@ if(Math.random()>0.65){
  }
 
 
+
+
     shootBeam(){
       console.log("shootBeam function called");
       var beam = new Beam(this);
+       
+    }
+
+
+    updateLivesDisplay() {
+      console.log("updateLivesDisplay function called");
+  
+      this.livesGroup.clear(true, true);
+  
+      for (var i = 0; i < this.playerLives; i++) {
+        var life = this.add.image(config.width - 50 * (i + 1), 50, "HP");
+        life.setOrigin(1, 0);
+        this.livesGroup.add(life);
+      }
+  
+      if (this.playerLives === 0) {
+        this.scene.start('endGame');
+      }
     }
 
 
@@ -127,14 +172,14 @@ if(Math.random()>0.65){
       this.movePlayerManager();
       if (Phaser.Input.Keyboard.JustDown(this.spacebar)){
         this.shootBeam();
+
+        
       }
 
       for(var i = 0; i < this.projectiles.getChildren().length; i++){
         var beam = this.projectiles.getChildren() [i];
         beam.update();
       }
-
-
     
     }
 
@@ -172,9 +217,10 @@ if(Math.random()>0.65){
     }
 
     destroyShip(pointer, gameObject){
+ 
       gameObject.setTexture("explosion");
       gameObject.play("explode");
+      
     }
-  
   
   }``
