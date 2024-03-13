@@ -7,6 +7,8 @@ class Scene1 extends Phaser.Scene {
       this.load.image("background00", "assets/images/background00.png");
       this.load.image("background", "assets/images/background.png");
       this.load.image("HP", "assets/images/hptruskawka.png");
+
+      this.load.image("gameover", "assets/images/gameover.png");
       
       this.load.spritesheet("ship", "assets/spritesheets/ship.png",{
         frameWidth: 40,
@@ -43,6 +45,7 @@ class Scene1 extends Phaser.Scene {
       this.load.spritesheet("beam", "assets/spritesheets/beam.png",{
         frameWidth: 32,
         frameHeight: 36});
+
 
 
         
