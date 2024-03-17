@@ -47,13 +47,6 @@ class Scene2 extends Phaser.Scene {
 
       this.input.on("gameobjectdown", this.destroyShip, this);
   
-    this.add.text(20, 20, "Playing game", {
-        font: "25px Arial",
-        fill: "pink"
-      });
-
-    
-
       this.powerUps = this.physics.add.group();
 
       var maxObjects =4;
@@ -65,6 +58,11 @@ class Scene2 extends Phaser.Scene {
 
           
       var score = 0;
+
+      this.scoreText = this.add.text(20, 20, "Your score: 0", {
+        font: "25px Arial",
+        fill: "black"
+      });
 
       this.livesGroup = this.add.group();
 
@@ -123,20 +121,22 @@ if(Math.random()>0.65){
 
  
 
- hitEnemy(projectile, enemy){
+ hitEnemy(projectile, enemy) {
   var explosion = new Explosion(this, enemy.x, enemy.y);
   projectile.destroy();
   this.resetShipPos(enemy);
   this.score += 15;
- }
-
-
-
-
+  console.log("score:", this.score);
+  this.updateScoreText(this.score); 
+}
     shootBeam(){
       console.log("shootBeam function called");
       var beam = new Beam(this);
        
+    }
+
+    updateScoreText(score) {
+      this.scene.start('endGame', { score: score });
     }
 
 
@@ -152,7 +152,7 @@ if(Math.random()>0.65){
       }
   
       if (this.playerLives === 0) {
-        this.scene.start('endGame');
+        this.updateScoreText(this.score)
       }
     }
 
