@@ -106,6 +106,9 @@ powerUp.play("blue");
 
 pickPowerUp(player, powerUp){
 powerUp.disableBody(true,true);
+
+this.playerLives++ ;
+this.updateLivesDisplay(); 
 }
 
 hurtPlayer(player, enemy){
@@ -128,6 +131,8 @@ this.resetShipPos(enemy);
 this.score += 15;
 this.scoreText.setText("Your score: " + this.score); 
 console.log("score:", this.score); 
+
+
 }
   shootBeam(){
     console.log("shootBeam function called");
@@ -182,18 +187,32 @@ console.log("score:", this.score);
   
   }
 
-  movePlayerManager(){
-    if(this.cursorKeys.left.isDown){
-      this.player.setVelocityX(-gameSettings.playerSpeed);
-    }else if (this.cursorKeys.right.isDown){
-      this.player.setVelocityX(gameSettings.playerSpeed);
-    }else if(this.cursorKeys.up.isDown){
-      this.player.setVelocityY(-gameSettings.playerSpeed);
-    }else if (this.cursorKeys.down.isDown){
-      this.player.setVelocityY(gameSettings.playerSpeed);
+  movePlayerManager() {
+    // oś X
+    if (this.cursorKeys.left.isDown) {
+        this.player.setVelocityX(-gameSettings.playerSpeed);
+    } 
+    else if (this.cursorKeys.right.isDown) {
+        this.player.setVelocityX(gameSettings.playerSpeed);
     }
-  
-  }
+
+    if (!this.cursorKeys.left.isDown && !this.cursorKeys.right.isDown) {
+        this.player.setVelocityX(this.player.body.velocity.x * 0.95);
+    }
+
+
+    //oś Y
+    if (this.cursorKeys.up.isDown) {
+        this.player.setVelocityY(-gameSettings.playerSpeed);
+    } 
+    else if (this.cursorKeys.down.isDown) {
+        this.player.setVelocityY(gameSettings.playerSpeed);
+    }
+
+    if (!this.cursorKeys.up.isDown && !this.cursorKeys.down.isDown) {
+        this.player.setVelocityY(this.player.body.velocity.y * 0.95);
+    }
+}
 
 
   moveShip(ship, speed) {

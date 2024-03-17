@@ -26,15 +26,14 @@ class Scene3 extends Phaser.Scene {
             fill: "white"
         }).setInteractive();
   
-        const noButton = this.add.text(1200, 900, "No", {
+        const noButton = this.add.text(1200, 900, "Of course!!!", {
             font: "25px Arial",
             fill: "white"
         }).setInteractive();
   
         yesButton.on('pointerdown', this.startGame, this);
   
-        noButton.on('pointerdown', function() {
-        });
+        noButton.on('pointerdown', this.startGame, this);
   
   
     }
