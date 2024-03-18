@@ -1,3 +1,4 @@
+![Screen z gry](assets/images/screenshot_1.png)
 ## Projekt na bazie Samouczka YouTube
 
 Ten projekt jest efektem nauki z samouczka udostępnionego przez Ansimuz na YouTube. Początkowy kod oraz koncepcje gry zostały zaczerpnięte z jego materiałów edukacyjnych.
