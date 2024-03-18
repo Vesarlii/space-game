@@ -2,11 +2,11 @@
 
 
 ## Bunny on Cloud: Mission Love in Space
-This is an extremely simple and enjoyable 2D game that focuses on a single level full of charm and joy. Players take on the role of a cute bunny traveling through space, shooting colorful carrots into hearts to heal them and restore love.
+This is an extremely simple and enjoyable 2D game that focuses on a single level full of charm and joy. Players take on the role of a cute bunny traveling through space, shooting colorful carrots into hearts to heal them and restore love :heart:
 
 ### Note:
 
-The initial code and some elements of the project are based on this tutorial: [Tutorial Link](https://www.youtube.com/playlist?list=PLDyH9Tk5ZdFzEu_izyqgPFtHJJXkc79no). All rules and copyrights regarding these excerpts belong to their author. I would like to extend my sincere thanks to Ansimuz for providing this tutorial and enabling learning.
+The initial code and some elements of the project are based on this tutorial: [Tutorial](https://www.youtube.com/playlist?list=PLDyH9Tk5ZdFzEu_izyqgPFtHJJXkc79no). All rules and copyrights regarding these excerpts belong to their author. I would like to extend my sincere thanks to Ansimuz for providing this tutorial and enabling learning.
 
 ### Running the Project using Live Server
 
@@ -28,7 +28,7 @@ Thank you for the inspiration and learning opportunity!
 
 
 ## Królik na Chmurze: Misja Miłości w Kosmosie
-To niezwykle prosta i przyjemna gra 2D, która skupia się na jednym poziomie pełnym uroku i radości. Gracze wcielają się w uroczego królika, który podróżuje po kosmosie, strzelając kolorowymi marchewkami w serca, aby je uzdrowić i przywrócić miłość.
+To niezwykle prosta i przyjemna gra 2D, która skupia się na jednym poziomie pełnym uroku i radości. Gracze wcielają się w uroczego królika, który podróżuje po kosmosie, strzelając kolorowymi marchewkami w serca, aby je uzdrowić i przywrócić miłość :heart:
 
 ### Uwaga:
 
