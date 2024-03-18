@@ -22,9 +22,10 @@ The project should launch in your browser, and any changes made to the code will
 
 Thank you for the inspiration and learning opportunity!
 
+
+
 ---
-___
-***
+
 
 ## Królik na Chmurze: Misja Miłości w Kosmosie
 To niezwykle prosta i przyjemna gra 2D, która skupia się na jednym poziomie pełnym uroku i radości. Gracze wcielają się w uroczego królika, który podróżuje po kosmosie, strzelając kolorowymi marchewkami w serca, aby je uzdrowić i przywrócić miłość.
