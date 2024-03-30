@@ -7,6 +7,7 @@ class Scene1 extends Phaser.Scene {
       this.load.image("background00", "assets/images/background00.png");
       this.load.image("background", "assets/images/background.png");
       this.load.image("HP", "assets/images/hptruskawka.png");
+      this.load.audio("explosion_sound", ["sounds/bach01.aac.m4a",]);
 
       this.load.image("gameover", "assets/images/gameover.png");
       

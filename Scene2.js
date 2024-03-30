@@ -116,6 +116,7 @@ this.resetShipPos(enemy);
 var explosion = new Explosion(this, player.x, player.y);
 player.x = config.width /2 - 145;
 player.y = config.height -64;
+explosion.playExplosionSound();
 
 
 this.playerLives-- ;
@@ -131,6 +132,7 @@ this.resetShipPos(enemy);
 this.score += 15;
 this.scoreText.setText("Your score: " + this.score); 
 console.log("score:", this.score); 
+explosion.playExplosionSound();
 
 
 }
